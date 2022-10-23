@@ -7,11 +7,7 @@ namespace App;
 include_once('./src/utils/debug.php');
 // $_GET - obsług zapytań
 // $_POST
-if (!empty($_GET['action'])) {
-    $action = $_GET['action'];
-} else {
-    $action = null;
-}
+$action = $_GET['action']  ?? null;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,11 +35,9 @@ if (!empty($_GET['action'])) {
             </ul>
         </nav>
         <article>
-            <?php if ($action === 'create') : ?>
-                <h3>Nowa notatka</h3>
-            <?php else : ?>
-                <h3>Lista notatek</h3>
-            <?php endif; ?>
+            <?php
+            require_once("./templates/pages/$page.php")
+            ?>
         </article>
     </main>
     <footer>Stopka</footer>
