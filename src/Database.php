@@ -36,6 +36,24 @@ class Database
             throw new StorageException('Nie udalo sie utworzyc nowej notatki', 400, $e);
         }
     }
+    public function getNotes(): array
+    {
+        try {
+            $notes = [];
+            $query = "SELECT id,title,created FROM notes";
+            // $result = $this->conn->query($query, PDO::FETCH_ASSOC);
+            // foreach ($result as $row) {
+            //     $notes[] = $row;
+            //     }
+
+
+            //     TO SAMO ALE KROTSZA WERSJA
+            $result = $this->conn->query($query);
+            return $result->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Throwable $e) {
+            throw new StorageException('Nie udalo sie pobrac danych o notatkach', 400, $e);
+        }
+    }
     private function createConnection(array $config): void
     {
         $dsn = "mysql:dbname={$config['database']};host={$config['host']}";
