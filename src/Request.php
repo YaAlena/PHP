@@ -21,4 +21,8 @@ class Request
     {
         return $this->post[$name] ?? $default;
     }
+    public function postParam(string $name, $default = null)
+    {
+        return $this->post[$name] ?? $default;
+    }
 }
