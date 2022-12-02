@@ -15,7 +15,7 @@ class View
     }
     private function escape(array $params): array
     {
-        $clearParams - [];
+        $clearParams = [];
 
         foreach ($params as $key => $param) {
             if (is_array($param)) {

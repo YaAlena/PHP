@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace App;
 
-require_once("Exception\NotFoundException.php");
-
-
 use App\Exception\StorageException;
 use App\Exception\ConfigurationException;
 use App\Exception\NotFoundException;
@@ -40,7 +37,7 @@ class Database
         }
     }
 
-    public function getNotes(int $id): array
+    public function getNote(int $id): array
     {
         try {
             $query = "SELECT * FROM notes WHERE id=$id";
@@ -73,6 +70,7 @@ class Database
             throw new StorageException('Nie udalo sie pobrac danych o notatkach', 400, $e);
         }
     }
+
     private function createConnection(array $config): void
     {
         $dsn = "mysql:dbname={$config['database']};host={$config['host']}";

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\Controller;
 
+use App\Database;
 use App\Request;
+use App\View;
 
-include_once('./src/View.php');
-include_once('./config/config.php');
-include_once('./src/Database.php');
+
 
 abstract class AbstractController
 {
