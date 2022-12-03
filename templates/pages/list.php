@@ -23,6 +23,9 @@
                     case 'created':
                         echo 'Notatka zostala utworzona!';
                         break;
+                    case 'edited':
+                        echo 'Notatka zostala zaktualizowana';
+                        break;
                 }
             }
             ?>
