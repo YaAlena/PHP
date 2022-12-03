@@ -29,6 +29,7 @@ abstract class AbstractController
         self::$configuration = $configuration;
     }
 
+
     public function run(): void
     {
         $action = $this->action() . 'Action';
@@ -40,5 +41,20 @@ abstract class AbstractController
     protected function action(): string
     {
         return $this->request->getParam('action', self::DEFAULT_ACTION);
+    }
+    protected function redirect(string $to, array $params): void
+    {
+        $location = $to;
+        if (count($params)) {
+            $queryParams = [];
+            foreach ($params as $key => $value) {
+                $queryParams[] = urldecode($key) . '=' . urldecode($value);
+            }
+            $queryParams = implode('&', $queryParams);
+            $location .= '?' . $queryParams;
+        }
+
+        header("Location: $location");
+        exit;
     }
 }
