@@ -6,10 +6,8 @@ namespace App\Controller;
 
 use App\Exception\NotFoundException;
 
-
 class NoteController extends AbstractController
 {
-
     public function createAction()
     {
         if ($this->request->hasPost()) {
@@ -22,9 +20,11 @@ class NoteController extends AbstractController
         }
         $this->view->render('create');
     }
+
     public function showAction()
     {
         $noteId = (int) $this->request->getParam('id');
+
         if (!$noteId) {
             $this->redirect('/', ['error' => 'missingNoteId']);
         }
@@ -40,6 +40,7 @@ class NoteController extends AbstractController
         ];
         $this->view->render('show', ['note' => $note]);
     }
+
     public function listAction()
     {
         $viewParams = [
@@ -62,9 +63,7 @@ class NoteController extends AbstractController
                 'title' => $this->request->postParam('title'),
                 'description' => $this->request->postParam('description'),
             ];
-
             $this->database->editNote($noteId, $noteData);
-
             $this->redirect('/', ['before' => 'edited']);
         }
         $this->view->render(

@@ -12,8 +12,7 @@ spl_autoload_register(function (string $name) {
 // error_reporting(0);
 // ini_set('diaplay_errors', '0');
 
-
-require_once('./src/utils/debug.php');
+include_once('./src/utils/debug.php');
 require_once('./config/config.php');
 
 use App\Exception\AppException;

@@ -1,7 +1,5 @@
 <?php
 
-use App\Controller;
-
 $configuration = [
     'host' => 'localhost',
     'database' => 'notes',

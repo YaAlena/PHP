@@ -13,6 +13,7 @@ class View
         dump($params);
         require_once('./templates/layout.php');
     }
+
     private function escape(array $params): array
     {
         $clearParams = [];
@@ -26,7 +27,6 @@ class View
                 $clearParams[$key] = $param;
             }
         }
-
         return $clearParams;
     }
 }

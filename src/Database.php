@@ -13,7 +13,7 @@ use Throwable;
 
 class Database
 {
-    private PDO $conn;
+    // private PDO $conn;
     public function __construct(array $config)
     {
         try {
@@ -57,31 +57,25 @@ class Database
         try {
             $notes = [];
             $query = "SELECT id,title,created FROM notes";
-            // $result = $this->conn->query($query, PDO::FETCH_ASSOC);
-            // foreach ($result as $row) {
-            //     $notes[] = $row;
-            //     }
-
-
-            //     TO SAMO ALE KROTSZA WERSJA
             $result = $this->conn->query($query);
             return $result->fetchAll(PDO::FETCH_ASSOC);
         } catch (Throwable $e) {
             throw new StorageException('Nie udalo sie pobrac danych o notatkach', 400, $e);
         }
     }
+
     public function editNote(int $id, array $data): void
     {
         try {
             $title = $this->conn->quote($data['title']);
             $description = $this->conn->quote($data['description']);
             $query = "UPDATE notes SET title = $title, description = $description WHERE id = $id";
-
             $this->conn->exec($query);
         } catch (Throwable $e) {
             throw new StorageException('Nie udalo sie edytowac notatki', 400, $e);
         }
     }
+
     public function deleteNote(int $id): void
     {
         try {
@@ -91,7 +85,6 @@ class Database
             throw new StorageException("Nie udalo sie usunac notatki", 400, $e);
         }
     }
-
 
     private function createConnection(array $config): void
     {
