@@ -8,7 +8,7 @@
             <ul>
                 <li>
                     <label for="title">Tytul <span class="required">*</span></label>
-                    <input value="<?php echo $note['title'] ?>" type="text" mame="title" id="title" class="filed-long">
+                    <input value="<?php echo $note['title'] ?>" type="text" name="title" id="title" class="filed-long">
                 </li>
                 <li>
                     <label for="field5">Tresc</label>

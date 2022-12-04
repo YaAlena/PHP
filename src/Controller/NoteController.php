@@ -15,6 +15,7 @@ class NoteController extends AbstractController
                 'title' => $this->request->postParam('title'),
                 'description' => $this->request->postParam('description'),
             ];
+
             $this->database->createNote($noteData);
             $this->redirect('/', ['before' => 'created']);
         }
